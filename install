@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+SCRIPTPATH=$(dirname $(readlink -f "$0"))
+
+mkdir -p $HOME/.config/nvim/plugin
+mkdir -p $HOME/.config/nvim/after/plugin
+mkdir -p $HOME/.config/nvim/lua/kelvin
+
+# link wholesale
+for f in `find "$(pwd)" -regex ".*\.vim$\|.*\.lua$" | sed "s|^\./||"`; do
+    localfp=${f#"$SCRIPTPATH"}
+    rm -rf ~/.config/nvim$localfp
+    ln -s $f $HOME/.config/nvim$localfp
+done
+
+ln -sf $SCRIPTPATH/coc-settings.json ~/.config/nvim/coc-settings.json
