@@ -16,6 +16,14 @@ cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 -- nvim comment --
 require("nvim_comment").setup()
 
+require('luasnip').config.set_config {
+  history = true,
+  updateevents = "TextChanged,TextChangedI",
+}
+
+--require("luasnip/loaders/from_vscode").load { paths = chadrc_config.plugins.options.luasnip.snippet_path }
+require("luasnip/loaders/from_vscode").load()
+
 -- lsp signature --
 require("lsp_signature").setup {
     bind = true,

@@ -6,7 +6,9 @@ end
 
 local utils = require("utils")
 for _, plugin in pairs(utils.get_directories(utils.script_path() .. "configs")) do
-    pcall(require, "plugins.configs."..plugin)
+    print("sourcing "..plugin)
+    require("plugins.configs."..plugin)
+    -- pcall(require, "plugins.configs."..plugin)
 end
 
 return require('packer').startup(function(use)
@@ -19,8 +21,9 @@ return require('packer').startup(function(use)
 
     -- LSP
     -- use { 'neoclide/coc.nvim', branch = 'release' }
-    use 'glepnir/lspsaga.nvim'
+    -- use 'glepnir/lspsaga.nvim'
     use 'nvim-treesitter/nvim-treesitter' --, {'do': ':TSUpdate'}
+    use "neovim/nvim-lspconfig"
     use {
       "neovim/nvim-lspconfig",
       opt = true,
@@ -56,6 +59,10 @@ return require('packer').startup(function(use)
       'nvim-telescope/telescope.nvim',
       requires = { { 'nvim-lua/plenary.nvim' }, }
     }
+   use "rafamadriz/friendly-snippets"
+   use "hrsh7th/nvim-cmp"
+   use "L3MON4D3/LuaSnip"
+   use "saadparwaiz1/cmp_luasnip"
       
     -- Debugging
     use 'puremourning/vimspector'
