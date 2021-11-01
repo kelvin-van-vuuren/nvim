@@ -1,4 +1,7 @@
 local set = vim.opt
+local g = vim.api
+
+
 
 set.clipboard = "unnamedplus"
 set.exrc = true
@@ -22,12 +25,11 @@ set.laststatus = 2
 set.smd = false --noshowmode
 -- Hide startup message
 set.shm="c"
--- Store backups together
---set.directory="~/.vim/backups//"
 -- Keep undo history between sessions
 set.undofile = true
 --
---set.undodir="~/.vim/undo/"
+--set.undodir = "~/.vim/undo/"
+vim.cmd("set undodir=~/.vim/undo")
 set.swapfile = false
 set.updatetime=300
 
@@ -36,3 +38,12 @@ set.hidden = true
 set.backup = false
 set.writebackup = false
 set.cmdheight = 2
+
+g.nvim_set_var("gutentags_cache_dir", '~/.vim/tags/')
+
+vim.cmd([[
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 80})
+augroup END
+]])

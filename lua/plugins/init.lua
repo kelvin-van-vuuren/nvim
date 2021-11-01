@@ -18,26 +18,15 @@ return require('packer').startup(function(use)
     use 'NvChad/nvim-base16.lua'
 
     -- LSP
-    -- use { 'neoclide/coc.nvim', branch = 'release' }
-    -- use 'glepnir/lspsaga.nvim'
     use 'nvim-treesitter/nvim-treesitter' --, {'do': ':TSUpdate'}
     use "neovim/nvim-lspconfig"
-    use {
-      "neovim/nvim-lspconfig",
-      opt = true,
-      setup = function()
-         --require("core.utils").packer_lazy_load "nvim-lspconfig"
-         -- reload the current file so lsp actually starts for it
-         vim.defer_fn(function()
-            vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-         end, 0)
-      end,
-    }
+    use "rafamadriz/friendly-snippets"
     use "hrsh7th/nvim-cmp"
+    use "L3MON4D3/LuaSnip"
+    use "saadparwaiz1/cmp_luasnip"
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-path"
-
     use "ray-x/lsp_signature.nvim"
 
     -- File tree
@@ -57,10 +46,6 @@ return require('packer').startup(function(use)
       'nvim-telescope/telescope.nvim',
       requires = { { 'nvim-lua/plenary.nvim' }, }
     }
-   use "rafamadriz/friendly-snippets"
-   use "hrsh7th/nvim-cmp"
-   use "L3MON4D3/LuaSnip"
-   use "saadparwaiz1/cmp_luasnip"
       
     -- Debugging
     use 'puremourning/vimspector'
