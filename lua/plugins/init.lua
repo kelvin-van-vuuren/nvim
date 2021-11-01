@@ -6,9 +6,7 @@ end
 
 local utils = require("utils")
 for _, plugin in pairs(utils.get_directories(utils.script_path() .. "configs")) do
-    print("sourcing "..plugin)
-    require("plugins.configs."..plugin)
-    -- pcall(require, "plugins.configs."..plugin)
+    pcall(require, "plugins.configs."..plugin)
 end
 
 return require('packer').startup(function(use)

@@ -23,10 +23,11 @@ set.smd = false --noshowmode
 -- Hide startup message
 set.shm="c"
 -- Store backups together
-set.directory="~/.vim/backups//"
+--set.directory="~/.vim/backups//"
 -- Keep undo history between sessions
 set.undofile = true
-set.undodir="~/.vim/undo/"
+--
+--set.undodir="~/.vim/undo/"
 set.swapfile = false
 set.updatetime=300
 
