@@ -1,5 +1,3 @@
--- define some colors
-
 local bar_fg = "#565c64"
 local activeBuffer_fg = "#c8ccd4"
 
@@ -18,8 +16,7 @@ require "bufferline".setup {
         enforce_regular_tabs = false,
         view = "multiwindow",
         show_buffer_close_icons = true,
-        separator_style = "thin",
-        mappings = "true"
+        separator_style = "thin"
     },
     -- bar colors!!
     highlights = {
@@ -82,15 +79,3 @@ require "bufferline".setup {
         }
     }
 }
-
-local opt = {silent = true}
-local map = vim.api.nvim_set_keymap
-vim.g.mapleader = " "
-
--- MAPPINGS
-map("n", "<S-t>", [[<Cmd>tabnew<CR>]], opt) -- new tab
-map("n", "<S-x>", [[<Cmd>bdelete<CR>]], opt) -- close tab
-
--- move between tabs
-map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
-map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
