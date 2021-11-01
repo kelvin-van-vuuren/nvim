@@ -18,9 +18,26 @@ return require('packer').startup(function(use)
     use 'NvChad/nvim-base16.lua'
 
     -- LSP
-    use { 'neoclide/coc.nvim', branch = 'release' }
+    -- use { 'neoclide/coc.nvim', branch = 'release' }
     use 'glepnir/lspsaga.nvim'
     use 'nvim-treesitter/nvim-treesitter' --, {'do': ':TSUpdate'}
+    use {
+      "neovim/nvim-lspconfig",
+      opt = true,
+      setup = function()
+         --require("core.utils").packer_lazy_load "nvim-lspconfig"
+         -- reload the current file so lsp actually starts for it
+         vim.defer_fn(function()
+            vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
+         end, 0)
+      end,
+    }
+    use "hrsh7th/nvim-cmp"
+    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+
+    use "ray-x/lsp_signature.nvim"
 
     -- File tree
     use 'kyazdani42/nvim-tree.lua'
@@ -45,10 +62,11 @@ return require('packer').startup(function(use)
     use 'szw/vim-maximizer'
 
     -- Utility
+    use "terrortylor/nvim-comment"
     use 'windwp/nvim-autopairs'
-    use 'scrooloose/nerdcommenter'
     use 'ludovicchabant/vim-gutentags' 
-    use 'tweekmonster/startuptime.vim'
+    use "max397574/better-escape.nvim"
+    -- use 'tweekmonster/startuptime.vim'
 
     -- Automatically set up your configuration after cloning packer.nvim
     if packer_bootstrap then
