@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-web-devicons'
     use 'ryanoasis/vim-devicons'
     use 'NvChad/nvim-base16.lua'
+    use 'folke/lsp-colors.nvim'
 
     -- LSP
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }

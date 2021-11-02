@@ -36,6 +36,8 @@ cmd "hi LspDiagnosticsVirtualTextInformation guifg=#A3BE8C"
 cmd "hi LspDiagnosticsSignHint guifg=#b4bbc8"
 cmd "hi LspDiagnosticsVirtualTextHint guifg=#b4bbc8"
 
+cmd "hi CursorLine guibg=#42464e"
+
 -- symbol highlighting --
 cmd "hi LspReferenceRead guibg=#42464e"
 cmd "hi LspReferenceText guibg=#42464e"
