@@ -3,9 +3,11 @@ local g = vim.api
 
 
 
+
 set.clipboard = "unnamedplus"
 set.exrc = true
-set.guicursor = ""
+vim.cmd("set guicursor=")
+vim.cmd("syntax enable")
 set.relativenumber = true
 set.nu = true
 set.hlsearch = true

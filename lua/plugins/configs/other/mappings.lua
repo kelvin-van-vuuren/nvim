@@ -1,4 +1,4 @@
 require("utils")
 
-map("n", "<CR>", ":CommentToggle <CR>", { noremap = true, silent = true })
-map("v", "<CR>", ":CommentToggle <CR>", { noremap = true, silent = true })
+map("n", "<leader>c", ":CommentToggle <CR>", { noremap = true, silent = true })
+map("v", "<leader>c", ":CommentToggle <CR>", { noremap = true, silent = true })

@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
     use 'NvChad/nvim-base16.lua'
 
     -- LSP
-    use 'nvim-treesitter/nvim-treesitter' --, {'do': ':TSUpdate'}
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use "neovim/nvim-lspconfig"
     use "rafamadriz/friendly-snippets"
     use "hrsh7th/nvim-cmp"
@@ -28,6 +28,9 @@ return require('packer').startup(function(use)
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-path"
     use "ray-x/lsp_signature.nvim"
+
+    -- Better quickfix list
+    use 'kevinhwang91/nvim-bqf'
 
     -- File tree
     use 'kyazdani42/nvim-tree.lua'
