@@ -95,12 +95,18 @@ vim.notify = function(msg, log_level, _opts)
    end
 end
 
-local servers  = { 'ccls', 'pyright' }
-require'lspconfig'.rust_analyzer.setup{}
+lspconfig["ccls"].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    init_options = { cache = { directory = "/tmp/ccls-cache" }; }
+}
+
+-- local servers  = { 'ccls', 'pyright' }
+-- require'lspconfig'.rust_analyzer.setup{}
  
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-    }
-end
+-- for _, lsp in ipairs(servers) do
+    -- lspconfig[lsp].setup {
+        -- on_attach = on_attach,
+        -- capabilities = capabilities,
+    -- }
+-- end
