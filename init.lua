@@ -1,4 +1,4 @@
-require("settings")
-require("plugins")
+require("options")
 require("mappings")
-require("colors")
+require("colors").init()
+require("plugins")

@@ -1,48 +1,165 @@
 local cmd = vim.cmd
 
--- misc --
-cmd "hi NvimInternalError guifg=#f9929b"
-cmd "hi VertSplit guifg=#2a2e36"
-cmd "hi EndOfBuffer guifg=#1e222a"
 
-cmd "hi PmenuSel guibg=#98c379"
-cmd "hi PmenuSbar guibg =#353b45"
-cmd "hi PmenuThumb guibg =#81A1C1"
+local config = require("colors").config
+local colors = require("colors").get()
 
--- line n.o --
+local black = colors.black
+local black2 = colors.black2
+local blue = colors.blue
+local darker_black = colors.darker_black
+local folder_bg = colors.folder_bg
+local green = colors.green
+local grey = colors.grey
+local grey_fg = colors.grey_fg
+local line = colors.line
+local nord_blue = colors.nord_blue
+local one_bg = colors.one_bg
+local one_bg2 = colors.one_bg2
+local pmenu_bg = colors.pmenu_bg
+local purple = colors.purple
+local red = colors.red
+local white = colors.white
+local yellow = colors.yellow
+local orange = colors.orange
+local one_bg3 = colors.one_bg3
+
+-- functions for setting highlights
+local fg = require("utils").fg
+local fg_bg = require("utils").fg_bg
+local bg = require("utils").bg
+
+-- Comments
+if config.italic_comments then
+   fg("Comment", grey_fg .. " gui=italic")
+else
+   fg("Comment", grey_fg)
+end
+
+-- Disable cusror line
 cmd "hi clear CursorLine"
-cmd "hi cursorlinenr guifg=#abb2bf"
+-- Line number
+fg("cursorlinenr", white)
 
--- git signs --
-cmd "hi DiffAdd guifg=#81A1C1 guibg = none"
-cmd "hi DiffChange guifg =#3A3E44 guibg = none"
-cmd "hi DiffModified guifg = #81A1C1 guibg = none"
+-- same it bg, so it doesn't appear
+fg("EndOfBuffer", black)
 
--- NvimTree --
-cmd "hi NvimTreeFolderIcon guifg = #61afef"
-cmd "hi NvimTreeFolderName guifg = #61afef"
+-- For floating windows
+fg("FloatBorder", blue)
+bg("NormalFloat", darker_black)
 
--- Errors
-cmd "hi LspDiagnosticsSignError guifg=#d47d85"
-cmd "hi LspDiagnosticsSignWarning guifg=#e7c787"
-cmd "hi LspDiagnosticsVirtualTextError guifg=#d47d85"
-cmd "hi LspDiagnosticsVirtualTextWarning guifg=#e7c787"
+-- Pmenu
+bg("Pmenu", one_bg)
+bg("PmenuSbar", one_bg2)
+bg("PmenuSel", pmenu_bg)
+bg("PmenuThumb", nord_blue)
+fg("CmpItemAbbr", white)
+fg("CmpItemAbbrMatch", white)
+fg("CmpItemKind", white)
+fg("CmpItemMenu", white)
 
--- Info
-cmd "hi LspDiagnosticsSignInformation guifg=#A3BE8C"
-cmd "hi LspDiagnosticsVirtualTextInformation guifg=#A3BE8C"
+-- misc
 
--- Hints
-cmd "hi LspDiagnosticsSignHint guifg=#b4bbc8"
-cmd "hi LspDiagnosticsVirtualTextHint guifg=#b4bbc8"
+-- inactive statuslines as thin lines
+fg("StatusLineNC", one_bg3 .. " gui=underline")
 
-cmd "hi CursorLine guibg=#42464e"
+fg("LineNr", grey)
+fg("NvimInternalError", red)
+fg("VertSplit", one_bg2)
 
--- symbol highlighting --
-cmd "hi LspReferenceRead guibg=#42464e"
-cmd "hi LspReferenceText guibg=#42464e"
-cmd "hi LspReferenceWrite guibg=#42464e"
+if config.transparency then
+   bg("Normal", "NONE")
+   bg("Folded", "NONE")
+   fg("Folded", "NONE")
+   fg("Comment", grey)
+end
 
-vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
-vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
-vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+-- [[ Plugin Highlights
+
+-- Dashboard
+fg("DashboardCenter", grey_fg)
+fg("DashboardFooter", grey_fg)
+fg("DashboardHeader", grey_fg)
+fg("DashboardShortcut", grey_fg)
+
+-- Git signs
+fg_bg("DiffAdd", blue, "NONE")
+fg_bg("DiffChange", grey_fg, "NONE")
+fg_bg("DiffChangeDelete", red, "NONE")
+fg_bg("DiffModified", red, "NONE")
+fg_bg("DiffDelete", red, "NONE")
+
+-- Indent blankline plugin
+fg("IndentBlanklineChar", line)
+
+-- Lsp diagnostics
+
+fg("DiagnosticHint", purple)
+fg("DiagnosticError", red)
+fg("DiagnosticWarn", yellow)
+fg("DiagnosticInformation", green)
+
+-- NvimTree
+fg("NvimTreeEmptyFolderName", folder_bg)
+fg("NvimTreeEndOfBuffer", darker_black)
+fg("NvimTreeFolderIcon", folder_bg)
+fg("NvimTreeFolderName", folder_bg)
+fg("NvimTreeGitDirty", red)
+fg("NvimTreeIndentMarker", one_bg2)
+bg("NvimTreeNormal", darker_black)
+bg("NvimTreeNormalNC", darker_black)
+fg("NvimTreeOpenedFolderName", folder_bg)
+fg("NvimTreeRootFolder", red .. " gui=underline") -- enable underline for root folder in nvim tree
+fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
+fg("NvimTreeVertSplit", darker_black)
+bg("NvimTreeVertSplit", darker_black)
+fg_bg("NvimTreeWindowPicker", red, black2)
+
+-- Telescope
+bg("TelescopeBorder", darker_black)
+fg("TelescopePromptPrefix", red)
+bg("TelescopeNormal", darker_black)
+bg("TelescopePreviewTitle", darker_black)
+bg("TelescopePromptTitle", darker_black)
+bg("TelescopeResultsTitle", darker_black)
+
+bg("TelescopeSelection", black2)
+
+-- keybinds cheatsheet
+fg_bg("CheatsheetBorder", black, black)
+bg("CheatsheetSectionContent", black)
+fg("CheatsheetHeading", white)
+
+local section_title_colors = {
+   white,
+   blue,
+   red,
+   green,
+   yellow,
+   purple,
+   orange,
+}
+for i, color in ipairs(section_title_colors) do
+   vim.cmd("highlight CheatsheetTitle" .. i .. " guibg = " .. color .. " guifg=" .. black)
+end
+
+-- Disable some highlight in nvim tree if transparency enabled
+if config.transparency then
+   bg("NormalFloat", "NONE")
+   bg("NvimTreeNormal", "NONE")
+   bg("NvimTreeNormalNC", "NONE")
+   bg("NvimTreeStatusLineNC", "NONE")
+   bg("NvimTreeVertSplit", "NONE")
+   fg("NvimTreeVertSplit", grey)
+
+   -- telescope
+   bg("TelescopeBorder", "NONE")
+   bg("TelescopePrompt", "NONE")
+   bg("TelescopeResults", "NONE")
+   bg("TelescopePromptBorder", "NONE")
+   bg("TelescopePromptNormal", "NONE")
+   bg("TelescopeNormal", "NONE")
+   bg("TelescopePromptPrefix", "NONE")
+   fg("TelescopeBorder", one_bg)
+   fg_bg("TelescopeResultsTitle", black, blue)
+end

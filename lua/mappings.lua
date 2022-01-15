@@ -1,17 +1,22 @@
-require("utils")
+local map = require("utils").map
 
-vim.g.mapleader = ' '
+-- leader key
+vim.g.mapleader = " "
 
-map('n', '<Leader>h', ':set hlsearch!<CR>', { noremap = true, silent = true })
+-- clear search highlighting
+map("n", "<Leader><Leader>", ":nohlsearch<CR>")
 
-map('n', '<C-J>', '<C-W><C-J>', { noremap = true, silent = true })
-map('n', '<C-K>', '<C-W><C-K>', { noremap = true, silent = true })
-map('n', '<C-L>', '<C-W><C-L>', { noremap = true, silent = true })
-map('n', '<C-H>', '<C-W><C-H>', { noremap = true, silent = true })
+-- navigate between windows with ctrl + j, k , l, h
+map("n", "<C-J>", "<C-W><C-J>")
+map("n", "<C-K>", "<C-W><C-K>")
+map("n", "<C-L>", "<C-W><C-L>")
+map("n", "<C-H>", "<C-W><C-H>")
 
-map('v', '<Leader>p', '"_dP', { noremap = true, silent = true })
+-- Format using null ls
+map("n", "<C-f>", ":Format<CR>")
 
-local utils = require("utils")
-for _, plugin in pairs(utils.get_directories(utils.script_path() .. "plugins/configs")) do
-    pcall(require, "plugins.configs."..plugin..".mappings")
-end
+-- paste and replace highlighted text without copying replaced text into register
+map("v", "<Leader>p", '"_dP')
+
+-- close buffers
+map("n", "<Leader>q", ":Bwipeout<CR>")

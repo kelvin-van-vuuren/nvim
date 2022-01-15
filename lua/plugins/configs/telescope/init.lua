@@ -1,37 +1,43 @@
-local actions = require('telescope.actions')
-require('telescope').setup {
-    defaults = {
-        file_sorter = require('telescope.sorters').get_fzy_sorter,
-        prompt_prefix = ' >',
-        color_devicons = true,
+require("plugins.configs.telescope.mappings")
 
-        file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
-        grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
-        qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+local actions = require("telescope.actions")
+local telescope = require("telescope")
+local sorter = require("telescope.sorters")
+local previewers = require("telescope.previewers")
 
-        mappings = {
-            i = {
-                ["<C-x>"] = false,
-                ["<C-q>"] = actions.send_to_qflist,
-            },
-        }
-    },
-    extensions = {
-        fzy_native = {
-            override_generic_sorter = false,
-            override_file_sorter = true,
-        }
-    }
-}
+telescope.setup({
+	defaults = {
+		file_sorter = sorter.get_fzy_sorter,
+		prompt_prefix = " 🔍 ",
+		color_devicons = true,
 
-require('telescope').load_extension('fzy_native')
+		file_previewer = previewers.vim_buffer_cat.new,
+		grep_previewer = previewers.vim_buffer_vimgrep.new,
+		qflist_previewer = previewers.vim_buffer_qflist.new,
 
-local M = {}
-M.search_dotfiles = function()
-    require("telescope.builtin").find_files({
-        prompt_title = "< VimRC >",
-        cwd = "$HOME/dotfiles/",
-    })
-end
+		mappings = {
+			i = {
+				["<C-c>"] = actions.close,
+				["<Esc>"] = actions.close,
 
-return M
+				["<C-j>"] = actions.move_selection_next,
+				["<C-k>"] = actions.move_selection_previous,
+
+				["<CR>"] = actions.select_default,
+
+				["<C-x>"] = false,
+				["<C-q>"] = actions.send_to_qflist,
+			},
+		},
+	},
+	extensions = {
+		fzf = {
+			fuzzy = true,
+			override_generic_sorter = true,
+			override_file_sorter = true,
+			case_mode = "smart_case",
+		},
+	},
+})
+
+telescope.load_extension("fzf")
