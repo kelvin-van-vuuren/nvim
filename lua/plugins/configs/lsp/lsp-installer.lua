@@ -18,6 +18,11 @@ lsp_installer.on_server_ready(function(server)
 		capabilities = require("plugins.configs.lsp.handlers").capabilities,
 	}
 
+	if server.name == "clangd" then
+		local clangd_opts = require("plugins.configs.lsp.server-settings.clangd")
+		opts = vim.tbl_deep_extend("force", clangd_opts, opts)
+	end
+
 	if server.name == "ccls" then
 		local ccls_opts = require("plugins.configs.lsp.server-settings.ccls")
 		opts = vim.tbl_deep_extend("force", ccls_opts, opts)

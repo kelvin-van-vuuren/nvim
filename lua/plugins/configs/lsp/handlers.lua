@@ -1,6 +1,6 @@
 local M = {}
 
-keymappings = require("plugins.configs.lsp.mappings")
+local keymappings = require("plugins.configs.lsp.mappings")
 
 local function highlight_document(client)
 	-- Set autocommands conditional on server_capabilities

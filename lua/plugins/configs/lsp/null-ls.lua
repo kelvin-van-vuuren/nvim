@@ -13,7 +13,7 @@ null_ls.setup({
 		-- formatting.yapf,
 		formatting.stylua,
 		formatting.clang_format,
-		diagnostics.cppcheck,
+		--diagnostics.cppcheck, -- this is acting a bit weird, switching to clang-tidy instead
 		diagnostics.flake8,
 	},
 })
