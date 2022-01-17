@@ -9,15 +9,15 @@ local signs = {
 }
 
 for _, sign in ipairs(signs) do
-	--vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.icon, numhl = "DiagnosticDefault" .. sign.name })
 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.icon, numhl = "" })
 end
 
 local config = {
-	virtual_text = {
-		prefix = "",
-		spacing = 0,
-	},
+	-- virtual_text = {
+	-- 	prefix = "",
+	-- 	spacing = 0,
+	-- },
+    virtual_text = false,
 	signs = {
 		active = signs,
 	},

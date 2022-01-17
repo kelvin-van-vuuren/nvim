@@ -243,23 +243,23 @@ components.active[3][4] = {
 	},
 }
 
+-- components.active[3][5] = {
+-- 	provider = style.left,
+-- 	hl = {
+-- 		fg = colors.grey,
+-- 		bg = colors.one_bg,
+-- 	},
+-- }
+
 components.active[3][5] = {
 	provider = style.left,
 	hl = {
-		fg = colors.grey,
+		fg = colors.green,
 		bg = colors.one_bg,
 	},
 }
 
 components.active[3][6] = {
-	provider = style.left,
-	hl = {
-		fg = colors.green,
-		bg = colors.grey,
-	},
-}
-
-components.active[3][7] = {
 	provider = style.position_icon,
 	hl = {
 		fg = colors.black,
@@ -267,7 +267,7 @@ components.active[3][7] = {
 	},
 }
 
-components.active[3][8] = {
+components.active[3][7] = {
 	provider = function()
 		local current_line = vim.fn.line(".")
 		local total_line = vim.fn.line("$")
@@ -281,7 +281,7 @@ components.active[3][8] = {
 	},
 }
 
-components.active[3][9] = {
+components.active[3][8] = {
 	provider = "scroll_bar",
 	left_sep = " ",
 	hl = {
@@ -290,7 +290,7 @@ components.active[3][9] = {
 	},
 }
 
-components.active[3][10] = {
+components.active[3][9] = {
 	provider = "   ",
 	hl = {
 		fg = colors.green,

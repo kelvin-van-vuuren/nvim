@@ -85,4 +85,12 @@ M.fg_bg = function(group, fgcol, bgcol)
     cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg= " .. bgcol)
 end
 
+M.sp = function(group, col)
+    cmd("hi " .. group .. " guisp=" .. col)
+end
+
+M.style = function(group, style)
+    cmd("hi " .. group .. " cterm=" .. style .. " gui=" .. style)
+end
+
 return M

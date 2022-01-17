@@ -28,6 +28,8 @@ local one_bg3 = colors.one_bg3
 local fg = require("utils").fg
 local fg_bg = require("utils").fg_bg
 local bg = require("utils").bg
+local sp = require("utils").sp
+local style = require("utils").style
 
 -- Comments
 if config.italic_comments then
@@ -61,7 +63,7 @@ fg("CmpItemMenu", white)
 -- misc
 
 -- inactive statuslines as thin lines
-fg("StatusLineNC", one_bg3 .. " gui=underline")
+--fg("StatusLineNC", one_bg3 .. " gui=undercurl") -- taking out for now, leaves see through line
 
 fg("LineNr", grey)
 fg("NvimInternalError", red)
@@ -93,11 +95,30 @@ fg_bg("DiffDelete", red, "NONE")
 fg("IndentBlanklineChar", line)
 
 -- Lsp diagnostics
+fg("LspDiagnosticsFloatingError", red)
+fg("LspDiagnosticsFloatingWarning", yellow)
+fg("LspDiagnosticsFloatingInfo", green)
+fg("LspDiagnosticsFloatingHint", purple)
 
-fg("DiagnosticHint", purple)
+fg("DiagnosticSignError", red)
+fg("DiagnosticSignWarn", yellow)
+fg("DiagnosticSignInfo", green)
+fg("DiagnosticSignHint", purple)
+
 fg("DiagnosticError", red)
 fg("DiagnosticWarn", yellow)
-fg("DiagnosticInformation", green)
+fg("DiagnosticInfo", green)
+fg("DiagnosticHint", purple)
+
+style("DiagnosticUnderlineError", "undercurl")
+style("DiagnosticUnderlineWarn", "undercurl")
+style("DiagnosticUnderlineInfo", "undercurl")
+style("DiagnosticUnderlineHint", "undercurl")
+
+sp("DiagnosticUnderlineError", red)
+sp("DiagnosticUnderlineWarn", yellow)
+sp("DiagnosticUnderlineInfo", green)
+sp("DiagnosticUnderlineHint", purple)
 
 -- NvimTree
 fg("NvimTreeEmptyFolderName", folder_bg)
