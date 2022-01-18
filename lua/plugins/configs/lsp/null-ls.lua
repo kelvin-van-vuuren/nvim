@@ -12,8 +12,8 @@ null_ls.setup({
 		formatting.black.with({ extra_args = { "--fast" } }),
 		-- formatting.yapf,
 		formatting.stylua,
-		formatting.clang_format,
-		--diagnostics.cppcheck, -- this is acting a bit weird, switching to clang-tidy instead
+		-- formatting.clang_format, -- clang-format + clang-tidy already included when running clangd as language server
+		-- diagnostics.cppcheck, -- this is acting a bit weird, using clangd for cpp lang server which includes clang-tidy
 		diagnostics.flake8,
 	},
 })

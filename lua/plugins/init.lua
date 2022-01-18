@@ -66,7 +66,7 @@ return require("packer").startup(function(use)
 	use("lewis6991/gitsigns.nvim") -- git info in buffers
 
 	-- Status lines
-    use("feline-nvim/feline.nvim") -- bottom status line
+	use("feline-nvim/feline.nvim") -- bottom status line
 	--use({ "glepnir/galaxyline.nvim", branch = "main" }) -- status line at bottom
 	use("akinsho/nvim-bufferline.lua") -- shows open buffers along top
 
@@ -75,6 +75,7 @@ return require("packer").startup(function(use)
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- use telescope's fzf port as sorter
 	--
 	-- Debugging
+	use("jbyuki/one-small-step-for-vimkind") -- for lua plugin debugging
 	use("puremourning/vimspector") -- graphical debugger for vim
 	use("szw/vim-maximizer") -- used to maximise windows (useful with vimspector)
 
@@ -84,7 +85,7 @@ return require("packer").startup(function(use)
 
 	-- Utility
 	use("akinsho/toggleterm.nvim") -- terminal
-    use("moll/vim-bbye") -- better buffer deletion
+	use("moll/vim-bbye") -- better buffer deletion
 	use("windwp/nvim-autopairs")
 	use("ludovicchabant/vim-gutentags")
 	use("max397574/better-escape.nvim") -- 'jk' to esc
