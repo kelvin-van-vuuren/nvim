@@ -20,26 +20,26 @@ table.insert(components.active, {})
 table.insert(components.active, {})
 
 local mode_colors = {
-	["n"] = { "NORMAL", colors.nord_blue },
+	["n"] = { "NORMAL ", colors.nord_blue },
 	["no"] = { "N-PENDING", colors.red },
-	["i"] = { "INSERT", colors.dark_purple },
+	["i"] = { "INSERT ", colors.dark_purple },
 	["ic"] = { "INSERT", colors.dark_purple },
 	["t"] = { "TERMINAL", colors.green },
-	["v"] = { "VISUAL", colors.cyan },
-	["V"] = { "V-LINE", colors.cyan },
+	["v"] = { "VISUAL ", colors.cyan },
+	["V"] = { "V-LINE ", colors.cyan },
 	[""] = { "V-BLOCK", colors.cyan },
 	["R"] = { "REPLACE", colors.orange },
 	["Rv"] = { "V-REPLACE", colors.orange },
-	["s"] = { "SELECT", colors.red },
-	["S"] = { "S-LINE", colors.red },
+	["s"] = { "SELECT ", colors.red },
+	["S"] = { "S-LINE ", colors.red },
 	[""] = { "S-BLOCK", colors.red },
 	["c"] = { "COMMAND", colors.pink },
 	["cv"] = { "COMMAND", colors.pink },
 	["ce"] = { "COMMAND", colors.pink },
-	["r"] = { "PROMPT", colors.teal },
-	["rm"] = { "MORE", colors.teal },
+	["r"] = { "PROMPT ", colors.teal },
+	["rm"] = { "MORE   ", colors.teal },
 	["r?"] = { "CONFIRM", colors.teal },
-	["!"] = { "SHELL", colors.green },
+	["!"] = { "SHELL   ", colors.green },
 }
 
 local mode_hl = function()
