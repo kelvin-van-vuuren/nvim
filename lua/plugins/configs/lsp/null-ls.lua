@@ -11,7 +11,8 @@ null_ls.setup({
 		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
 		formatting.black.with({ extra_args = { "--fast" } }),
 		-- formatting.yapf,
-		formatting.stylua,
+		formatting.stylua, -- lua formatting
+        formatting.cmake_format, -- cmake formatting
 		-- formatting.clang_format, -- clang-format + clang-tidy already included when running clangd as language server
 		-- diagnostics.cppcheck, -- this is acting a bit weird, using clangd for cpp lang server which includes clang-tidy
 		diagnostics.flake8,

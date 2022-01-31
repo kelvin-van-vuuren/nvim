@@ -91,10 +91,10 @@ cmp.setup({
 	formatting = {
 		-- TODO: user_data is a vim's complete-items and is not supported in nvim-cmp (only supports abbr, menu and kind). make PR to repo to public repo to add this in
 		-- Could and icon field be added? to vim.completed-item?
-		fields = { "user_data", "abbr", "kind", "menu" },
+		-- fields = { "user_data", "abbr", "kind", "menu" },
 		format = function(entry, vim_item)
-			vim_item.user_data = string.format("%s ", lspkind_icons[vim_item.kind])
-			--vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
+			-- vim_item.user_data = string.format("%s ", lspkind_icons[vim_item.kind])
+			vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
 			vim_item.menu = ({
 				luasnip = "[Luasnip]",
 				nvim_lsp = "[Lsp]",
