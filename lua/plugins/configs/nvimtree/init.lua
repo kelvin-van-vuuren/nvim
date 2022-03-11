@@ -1,7 +1,6 @@
 local g = vim.g
 g.nvim_tree_git_hl = 1 --enable file highlight for git attributes
 g.nvim_tree_indent_markers = 1
-g.nvim_tree_quit_on_open = 0 -- closes tree when file's opened
 g.nvim_tree_root_folder_modifier = table.concat({ ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" })
 
 vim.g.nvim_tree_icons = {
@@ -67,4 +66,9 @@ require("nvim-tree").setup({
 		folder_arrows = 1,
 		tree_width = 30,
 	},
+    actions = {
+        open_file = {
+            quit_on_open = false,
+        }
+    },
 })
