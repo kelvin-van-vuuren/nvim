@@ -18,7 +18,7 @@ end
 -- Load plugin configs + mappings
 local utils = require("utils")
 for _, plugin in pairs(utils.get_directories(utils.script_path() .. "configs")) do
-	require("plugins.configs." .. plugin)
+    require("plugins.configs." .. plugin)
 end
 
 -- Install plugins
@@ -31,7 +31,7 @@ return require("packer").startup(function(use)
 	-- Theming
 	use("kyazdani42/nvim-web-devicons") -- icons
 	use("ryanoasis/vim-devicons") -- icons
-	use("NvChad/nvim-base16.lua") -- colour schemes
+	use({"NvChad/base46", commit = "dbd746da1b1ab43faf8aad2ba5ad0be3d43eba86"}) -- colour schemes, setting to specific commit due to recent breaking changes from plugin rewrite
 
 	-- LSP
 	use("neovim/nvim-lspconfig") -- enable lsp
