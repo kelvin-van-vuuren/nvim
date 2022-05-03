@@ -25,7 +25,6 @@ telescope.setup({
 
 				["<CR>"] = actions.select_default,
 
-				["<C-x>"] = false,
 				["<C-q>"] = actions.send_to_qflist,
 			},
 		},
