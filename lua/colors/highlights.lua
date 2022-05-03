@@ -62,8 +62,10 @@ fg("CmpItemMenu", white)
 
 -- misc
 
+
 -- inactive statuslines as thin lines
---fg("StatusLineNC", one_bg3 .. " gui=undercurl") -- taking out for now, leaves see through line
+vim.cmd(":set fillchars+=stlnc:─,vert:│")
+fg("StatusLineNC", one_bg2) 
 
 fg("LineNr", grey)
 fg("NvimInternalError", red)
