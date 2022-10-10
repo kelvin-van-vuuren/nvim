@@ -45,6 +45,8 @@ return {
     end,
   },
 
+    ["puremourning/vimspector"] = {},
+
   -- remove plugin
   -- ["NvChad/nvterm"] = false,
 }

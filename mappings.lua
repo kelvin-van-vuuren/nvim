@@ -22,6 +22,22 @@ M.telescope = {
     }
 }
 
+
+M.vimspector = {
+    n = {
+        -- map("n", "<leader>dl", "<Plug>VimspectorStepInto")
+        ["<leader>dl"] = { ":call vimspector#StepInto()<CR>", "debugger step into" },
+        ["<leader>dj"] = { ":call vimspector#StepOver()<CR>", "debugger step over" },
+        ["<leader>dk"] =  { ":call vimspector#StepOut()<CR>", "debugger step out" },
+        ["<leader>d<space>"] = {":call vimspector#Continue()<CR>", "debugger continue" },
+        ["<leader>drc"] = { ":call vimspector#RunToCursor()<CR>", "debugger run to cursor" },
+        ["<leader>dbp"] = { ":call vimspector#ToggleBreakpoint()<CR>", "debugger toggle breakpoint" },
+        ["<leader>dd"] = { "<cmd> vimspector#Launch()<CR>", "debugger launch" },
+        ["<leader>de"] = { ":call vimspector#Reset()<CR>", "debugger reset" },
+        -- map("n", "<leader>m", ":MaximizerToggle!<CR>", { noremap = true })
+    }
+}
+
 M.nvterm = {
   plugin = true,
 
@@ -88,6 +104,12 @@ M.nvterm = {
     --   "new vertical term",
     -- },
   },
+}
+
+M.nvimtree = {
+    n = {
+        ["<C-a>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
+    }
 }
 
 return M
