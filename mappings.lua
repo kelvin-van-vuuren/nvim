@@ -5,6 +5,7 @@ M.general = {
     [";"] = { ":", "command mode", opts = { nowait = true } },
     ["<Leader><Leader>"] = { ":nohlsearch<CR>" }, -- clear searrch highlighting
     ["C-f"] = { ":Format<CR>" },
+    ["<Leader>s"] = { ":ClangdSwitchSourceHeader<CR>" },
   },
 }
 
