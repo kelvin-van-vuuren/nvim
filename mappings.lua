@@ -112,4 +112,10 @@ M.nvimtree = {
     }
 }
 
+M.lspconfig = {
+    n = {
+        ["gl"] = { '<cmd>lua vim.diagnostic.open_float(0, { scope = "line", border = "single" })<CR>' },
+    }
+}
+
 return M
