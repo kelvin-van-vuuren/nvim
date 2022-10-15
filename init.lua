@@ -1,3 +1,5 @@
+require "custom.globals"
+
 local options =  {
     guicursor = "", -- disable cursor styling
     cursorline = false, -- disable cursor styling
