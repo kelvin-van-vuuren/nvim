@@ -124,4 +124,10 @@ M.lspconfig = {
 
 }
 
+M.null_ls = {
+    n = {
+        ["<C-f>"] = { '<cmd>lua require("custom.plugins.null-ls").lsp_formatting(vim.api.nvim_get_current_buf()) <CR>', 'Format current file using null-ls'}
+    }
+}
+
 return M
