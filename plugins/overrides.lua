@@ -41,17 +41,6 @@ M.nvimtree = {
   },
 }
 
--- TODO: for some reason this stops custom mappings for telescope from working
--- M.telescope = {
---     mappings = {
---         i = {
---             ["<C-c>"] = require("telescope.actions").close,
---             ["<Esc>"] = require("telescope.actions").close,
---             ["<CR>"] = require("telescope.actions").select_default,
---         },
---     },
--- }
-
 M.gitsigns = {
   signs = {
     add = { hl = "GitSignsAdd", text = "+", numhl = "GitSignsAddNr" },
