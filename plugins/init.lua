@@ -29,6 +29,10 @@ return {
     override_options = overrides.telesope,
   },
 
+  ["lewis6991/gitsigns.nvim"] = {
+    override_options = overrides.gitsigns,
+  },
+
   -- Install a plugin
   ["max397574/better-escape.nvim"] = {
     event = "InsertEnter",
