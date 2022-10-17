@@ -26,7 +26,15 @@ return {
   },
 
   ["nvim-telescope/telescope.nvim"] = {
-    override_options = overrides.telesope,
+        override_options = function()
+            return {
+                defaults = {
+                   mappings = {
+                        i = { ["<ESC>"] = require("telescope.actions").close },
+                    } ,
+                },
+            }
+        end,
   },
 
   ["lewis6991/gitsigns.nvim"] = {

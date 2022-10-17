@@ -20,10 +20,6 @@ M.telescope = {
         ["<leader>po"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
         ["<leader>pk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
     },
-
-    i = {
-        ["<Esc>"] = { '<cmd>lua require("telescope.actions").close(vim.api.nvim_get_current_buf()) <CR>'}
-    }
 }
 
 
@@ -120,8 +116,6 @@ M.lspconfig = {
     n = {
         ["gl"] = { '<cmd>lua vim.diagnostic.open_float(0, { scope = "line", border = "single" })<CR>' },
     }
-
-
 }
 
 M.null_ls = {
