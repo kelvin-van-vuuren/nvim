@@ -22,18 +22,15 @@ M.telescope = {
     },
 }
 
-
-M.vimspector = {
+M.nvim_dap = {
     n = {
-        -- map("n", "<leader>dl", "<Plug>VimspectorStepInto")
-        ["<leader>dl"] = { ":call vimspector#StepInto()<CR>", "debugger step into" },
-        ["<leader>dj"] = { ":call vimspector#StepOver()<CR>", "debugger step over" },
-        ["<leader>dk"] =  { ":call vimspector#StepOut()<CR>", "debugger step out" },
-        ["<leader>d<space>"] = {":call vimspector#Continue()<CR>", "debugger continue" },
-        ["<leader>drc"] = { ":call vimspector#RunToCursor()<CR>", "debugger run to cursor" },
-        ["<leader>dbp"] = { ":call vimspector#ToggleBreakpoint()<CR>", "debugger toggle breakpoint" },
-        ["<leader>dd"] = { "<cmd> vimspector#Launch()<CR>", "debugger launch" },
-        ["<leader>de"] = { ":call vimspector#Reset()<CR>", "debugger reset" },
+        ["<leader>dl"] = { "<cmd>lua require'dap'.step_into()<CR>", "debugger step into" },
+        ["<leader>dj"] = { "<cmd>lua require'dap'.step_over()<CR>", "debugger step over" },
+        ["<leader>dk"] =  { "<cmd>lua require'dap'.step_out()<CR>", "debugger step out" },
+        ["<leader>d<space>"] = {"<cmd>lua require'dap'.continue()<CR>", "debugger continue" },
+        ["<leader>dbp"] = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", "debugger toggle breakpoint" },
+        ["<leader>dd"] = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "debugger set conditional breakpoint" },
+        -- ["<leader>de"] = { ":call vimspector#Reset()<CR>", "debugger reset" },
         -- map("n", "<leader>m", ":MaximizerToggle!<CR>", { noremap = true })
     }
 }

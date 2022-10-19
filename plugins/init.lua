@@ -41,7 +41,9 @@ return {
     override_options = overrides.gitsigns,
   },
 
-  -- Install a plugin
+  -- Additional plugins
+
+    -- escape using key combo (currently set to jk)
   ["max397574/better-escape.nvim"] = {
     event = "InsertEnter",
     config = function()
@@ -57,7 +59,24 @@ return {
     end,
   },
 
-    ["puremourning/vimspector"] = {},
+    -- debugger
+    ["mfussenegger/nvim-dap"] = {
+        config = function()
+            require "custom.plugins.nvim-dap"
+        end,
+    },
+
+    ["rcarriga/nvim-dap-ui"] = {
+        config = function()
+            require("dapui").setup()
+        end,
+    },
+
+    ["theHamsta/nvim-dap-virtual-text"] = {
+        config = function ()
+            require("nvim-dap-virtual-text").setup()
+        end
+    },
 
   -- remove plugin
   -- ["NvChad/nvterm"] = false,
