@@ -70,12 +70,14 @@ return {
         config = function()
             require("dapui").setup()
         end,
+        requires = {"mfussenegger/nvim-dap"}
     },
 
     ["theHamsta/nvim-dap-virtual-text"] = {
         config = function ()
             require("nvim-dap-virtual-text").setup()
-        end
+        end,
+        requires = {"mfussenegger/nvim-dap"}
     },
 
   -- remove plugin
