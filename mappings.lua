@@ -112,6 +112,10 @@ M.nvimtree = {
 M.lspconfig = {
     n = {
         ["gl"] = { '<cmd>lua vim.diagnostic.open_float(0, { scope = "line", border = "single" })<CR>' },
+        ["<leader>dF"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "go to previous diagnostic" },
+        ["<leader>df"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "go to next diagnostic" },
+        ["<leader>dt"] = { "<cmd>Telescope diagnostics<CR>", "telescope diagnostics" },
+        ["<leader>da"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "lsp code action" },
     }
 }
 
