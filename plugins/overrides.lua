@@ -22,6 +22,24 @@ M.mason = {
     "html-lsp",
     "typescript-language-server",
     "deno",
+
+    -- C / C++
+    "clangd",
+    "clang-format",
+    "cmake-language-server",
+    "cpplint",
+    "cpptools",
+
+    -- shell
+    "shellcheck",
+    "shellharden",
+    "bash-language-server",
+    "bash-debug-adapter",
+    "awk-language-server",
+
+    --python
+    "pyright",
+    "pylint",
   },
 }
 
