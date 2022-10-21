@@ -125,4 +125,11 @@ M.null_ls = {
     }
 }
 
+M.nvim_bufdel = {
+    n = {
+        ["<leader>q"] = { '<cmd>BufDel<CR>', 'close buffer'},
+        ["<leader>Q"] = { '<cmd>BufDel!<CR>', 'close buffer ignore changes'}
+    }
+}
+
 return M

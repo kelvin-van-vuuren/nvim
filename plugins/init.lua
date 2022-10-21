@@ -80,6 +80,9 @@ return {
         requires = {"mfussenegger/nvim-dap"}
     },
 
+    -- better bdelete, close buffers without closing windows
+    ['ojroques/nvim-bufdel'] = {},
+
   -- remove plugin
   -- ["NvChad/nvterm"] = false,
 }
