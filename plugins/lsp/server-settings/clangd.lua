@@ -6,10 +6,10 @@ return {
 		-- to add more checks, create .clang-tidy file in the root directory
 		-- and add Checks key, see https://clang.llvm.org/extra/clang-tidy/
 		"--clang-tidy",
-        "--background-index",
+		"--background-index",
 		"--completion-style=bundled",
 		"--header-insertion=iwyu",
-        "--enable-config",
+		"--enable-config",
 	},
 	-- TODO: figure out what is this
 	init_options = {

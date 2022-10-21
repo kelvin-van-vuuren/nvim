@@ -1,4 +1,4 @@
-local dap = require('dap')
+local dap = require("dap")
 
 -- ui
 require("custom.plugins.dap.ui")

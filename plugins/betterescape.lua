@@ -1,4 +1,4 @@
-  require("better_escape").setup({
-    mapping = { "jk" },
-    timeout = 300,
-  })
+require("better_escape").setup({
+	mapping = { "jk" },
+	timeout = 300,
+})
