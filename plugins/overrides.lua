@@ -69,4 +69,10 @@ M.gitsigns = {
   }
 }
 
+M.nvchad_ui = {
+     tabufline = {
+       lazyload = false,
+     },
+}
+
 return M

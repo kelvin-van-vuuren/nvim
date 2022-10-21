@@ -41,6 +41,10 @@ return {
     override_options = overrides.gitsigns,
   },
 
+    ["NvChad/ui"] = {
+        override_options = overrides.nvchad_ui,
+    },
+
   -- Additional plugins
 
     -- escape using key combo (currently set to jk)
