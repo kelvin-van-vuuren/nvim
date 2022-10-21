@@ -66,7 +66,7 @@ return {
     -- debugger
     ["mfussenegger/nvim-dap"] = {
         config = function()
-            require "custom.plugins.nvim-dap"
+            require "custom.plugins.dap"
         end,
     },
 

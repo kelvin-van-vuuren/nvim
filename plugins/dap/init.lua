@@ -1,10 +1,10 @@
 local dap = require('dap')
 
 -- ui
-require("custom.plugins.nvim-dap.ui")
+require("custom.plugins.dap.ui")
 
 -- debuggers
-local lldb = require("custom.plugins.nvim-dap.adapters.lldb")
+local lldb = require("custom.plugins.dap.adapters.lldb")
 
 dap.adapters.lldb = lldb.adapter
 
