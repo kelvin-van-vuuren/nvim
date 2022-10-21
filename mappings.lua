@@ -33,7 +33,8 @@ M.nvim_dap = {
 			"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
 			"debugger set conditional breakpoint",
 		},
-		-- ["<leader>de"] = { ":call vimspector#Reset()<CR>", "debugger reset" },
+		["<leader>de"] = { "<cmd>lua require'dap'.terminate()<CR>", "debugger reset" },
+		["<leader>dr"] = { "<cmd>lua require'dap'.run_last()<CR>", "debugger reset" },
 		-- map("n", "<leader>m", ":MaximizerToggle!<CR>", { noremap = true })
 	},
 }
