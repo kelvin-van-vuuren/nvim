@@ -75,4 +75,21 @@ M.nvchad_ui = {
 	},
 }
 
+M.cmp = {
+	formatting = {
+		format = function(entry, vim_item)
+			local icons = require("nvchad_ui.icons").lspkind
+			vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
+			vim_item.menu = ({
+				luasnip = "[Luasnip]",
+				nvim_lsp = "[Nvim LSP]",
+				buffer = "[Buffer]",
+				nvim_lua = "[Nvim Lua]",
+				path = "[Path]",
+			})[entry.source.name]
+			return vim_item
+		end,
+	},
+}
+
 return M

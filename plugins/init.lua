@@ -45,6 +45,10 @@ return {
 		override_options = overrides.nvchad_ui,
 	},
 
+	["hrsh7th/nvim-cmp"] = {
+        override_options = overrides.cmp,
+    },
+
 	-- Additional plugins
 
 	-- escape using key combo (currently set to jk)
