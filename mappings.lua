@@ -139,4 +139,10 @@ M.nvim_bufdel = {
 	},
 }
 
+M.tabufline = {
+	n = {
+		["<TAB>"] = {"<C-i>"},
+	},
+}
+
 return M
