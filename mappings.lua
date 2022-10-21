@@ -142,6 +142,20 @@ M.nvim_bufdel = {
 M.tabufline = {
 	n = {
 		["<TAB>"] = {"<C-i>"},
+        ["L"] = {
+          function()
+            require("nvchad_ui.tabufline").tabuflineNext()
+          end,
+          "goto next buffer",
+        },
+
+        ["H"] = {
+          function()
+            require("nvchad_ui.tabufline").tabuflinePrev()
+          end,
+          "goto prev buffer",
+        },
+
 	},
 }
 
