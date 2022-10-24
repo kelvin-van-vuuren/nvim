@@ -32,3 +32,6 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 80})
 augroup END
 ]])
+
+-- wrap git commit body message lines at 72 characters
+vim.cmd("autocmd Filetype gitcommit setlocal spell textwidth=72");
