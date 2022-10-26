@@ -46,8 +46,8 @@ return {
 	},
 
 	["hrsh7th/nvim-cmp"] = {
-        override_options = overrides.cmp,
-    },
+		override_options = overrides.cmp,
+	},
 
 	-- Additional plugins
 
@@ -90,6 +90,8 @@ return {
 
 	-- better bdelete, close buffers without closing windows
 	["ojroques/nvim-bufdel"] = {},
+
+	["nvim-lua/plenary.nvim"] = {},
 
 	-- remove plugin
 	-- ["NvChad/nvterm"] = false,

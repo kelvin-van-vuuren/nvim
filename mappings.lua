@@ -159,4 +159,10 @@ M.tabufline = {
 	},
 }
 
+M.plenary = {
+   n = {
+        ["<leader>t"] = { "<Plug>PlenaryTestFile", "run plenary test on file"}
+    }
+}
+
 return M
