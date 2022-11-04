@@ -34,4 +34,11 @@ augroup END
 ]])
 
 -- wrap git commit body message lines at 72 characters
-vim.cmd("autocmd Filetype gitcommit setlocal spell textwidth=72");
+vim.cmd([["
+    augroup gitsetup
+        autocmd!
+        autocmd FileType gitcommit
+                \ autocmd CursorMoved,CursorMovedI * 
+                        \ let &l:textwidth = line('.') == 1 ? 50 : 72
+augroup end
+"]])
