@@ -14,7 +14,7 @@ M.telescope = {
 		["<C-p>"] = { ":Telescope git_files <CR>" },
 		["<leader>pf"] = { "<cmd> Telescope find_files <CR>", "find files" },
 		["<leader>pfa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
-		["<leader>pg"] = { "<cmd> Telescope live_grep prompt_prefix=🔍<CR>", "live grep" },
+		["<leader>pg"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
 		["<leader>pb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
 		["<leader>ph"] = { "<cmd> Telescope help_tags <CR>", "help page" },
 		["<leader>po"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
