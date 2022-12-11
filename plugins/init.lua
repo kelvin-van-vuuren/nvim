@@ -93,6 +93,7 @@ return {
 
 	["nvim-lua/plenary.nvim"] = {},
 
+	["vimwiki/vimwiki"] = {},
 	-- remove plugin
 	-- ["NvChad/nvterm"] = false,
 }
