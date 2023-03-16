@@ -16,7 +16,10 @@ M.config = {
 		end,
 		cwd = "${workspaceFolder}",
 		stopOnEntry = false,
-		args = {},
+		args = function()
+			local argument_string = vim.fn.input("Program arguments: ")
+			return vim.fn.split(argument_string, " ", true)
+		end,
 
 		-- 💀
 		-- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
