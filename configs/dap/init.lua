@@ -1,10 +1,10 @@
 local dap = require("dap")
 
 -- ui
-require("custom.plugins.dap.ui")
+require("custom.configs.dap.ui")
 
 -- debuggers
-local lldb = require("custom.plugins.dap.adapters.lldb")
+local lldb = require("custom.configs.dap.adapters.lldb")
 
 dap.adapters.lldb = lldb.adapter
 

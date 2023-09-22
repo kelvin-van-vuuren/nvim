@@ -42,3 +42,15 @@ vim.cmd([["
                         \ let &l:textwidth = line('.') == 1 ? 50 : 72
 augroup end
 "]])
+
+local enable_providers = {
+	"python3_provider",
+	-- and so on
+}
+
+for _, plugin in pairs(enable_providers) do
+	vim.g["loaded_" .. plugin] = nil
+	vim.cmd("runtime " .. plugin)
+end
+
+vim.g.python3_host_prog = "/bin/python3"

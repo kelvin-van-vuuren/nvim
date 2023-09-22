@@ -126,7 +126,7 @@ M.lspconfig = {
 M.null_ls = {
 	n = {
 		["<C-f>"] = {
-			'<cmd>lua require("custom.plugins.lsp.null-ls").lsp_formatting(vim.api.nvim_get_current_buf()) <CR>',
+			'<cmd>lua require("custom.configs.lsp.null-ls").lsp_formatting(vim.api.nvim_get_current_buf()) <CR>',
 			"Format current file using null-ls",
 		},
 	},
@@ -141,28 +141,27 @@ M.nvim_bufdel = {
 
 M.tabufline = {
 	n = {
-		["<TAB>"] = {"<C-i>"},
-        ["L"] = {
-          function()
-            require("nvchad_ui.tabufline").tabuflineNext()
-          end,
-          "goto next buffer",
-        },
+		["<TAB>"] = { "<C-i>" },
+		["L"] = {
+			function()
+				require("nvchad.tabufline").tabuflineNext()
+			end,
+			"goto next buffer",
+		},
 
-        ["H"] = {
-          function()
-            require("nvchad_ui.tabufline").tabuflinePrev()
-          end,
-          "goto prev buffer",
-        },
-
+		["H"] = {
+			function()
+				require("nvchad.tabufline").tabuflinePrev()
+			end,
+			"goto prev buffer",
+		},
 	},
 }
 
 M.plenary = {
-   n = {
-        ["<leader>t"] = { "<Plug>PlenaryTestFile", "run plenary test on file"}
-    }
+	n = {
+		["<leader>t"] = { "<Plug>PlenaryTestFile", "run plenary test on file" },
+	},
 }
 
 return M

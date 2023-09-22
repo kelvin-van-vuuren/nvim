@@ -69,16 +69,17 @@ M.gitsigns = {
 	},
 }
 
-M.nvchad_ui = {
+M.ui = {
 	tabufline = {
 		lazyload = false,
+		overriden_modules = nil,
 	},
 }
 
 M.cmp = {
 	formatting = {
 		format = function(entry, vim_item)
-			local icons = require("nvchad_ui.icons").lspkind
+			local icons = require("nvchad.icons.lspkind")
 			vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
 			vim_item.menu = ({
 				luasnip = "[Luasnip]",

@@ -1,3 +1,5 @@
+local M = {}
+
 local merge_tb = vim.tbl_deep_extend
 
 local on_attach = require("plugins.configs.lspconfig").on_attach
@@ -13,7 +15,7 @@ for _, lsp in ipairs(servers) do
 		capabilities = capabilities,
 	}
 
-	local exists, settings = pcall(require, "custom.plugins.lsp.server-settings." .. lsp)
+	local exists, settings = pcall(require, "custom.configs.lsp.server-settings." .. lsp)
 	if exists then
 		opts = merge_tb("force", settings, opts)
 	end
@@ -35,3 +37,5 @@ local config = {
 }
 
 vim.diagnostic.config(config)
+
+return M
