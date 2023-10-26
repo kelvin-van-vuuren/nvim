@@ -93,4 +93,27 @@ M.cmp = {
 	},
 }
 
+M.telescope = {
+	defaults = {
+		vimgrep_arguments = {
+			"rg",
+			"-L",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--hidden",
+		},
+		mappings = {
+			i = {
+				["<esc>"] = function(...)
+					require("telescope.actions").close(...)
+				end,
+			},
+		},
+	},
+}
+
 return M
