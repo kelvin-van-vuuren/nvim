@@ -23,6 +23,12 @@ local sources = {
 	b.formatting.clang_format,
 	b.formatting.rustfmt,
 	b.diagnostics.cppcheck,
+
+	-- go
+	b.formatting.gofmt,
+	b.formatting.goimports_reviser,
+	b.formatting.golines,
+	b.diagnostics.golangci_lint,
 }
 
 null_ls.setup({

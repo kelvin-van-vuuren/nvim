@@ -37,9 +37,21 @@ M.mason = {
 		"bash-debug-adapter",
 		"awk-language-server",
 
-		--python
+		-- python
 		"pyright",
 		"pylint",
+
+		-- go
+		"delve",
+		"go-debug-adapter",
+		"gofumpt",
+		"goimports",
+		"goimports-reviser",
+		"golangci-lint",
+		"golangci-lint-langserver",
+		"golines",
+		"gomodifytags",
+		"gopls",
 	},
 }
 
