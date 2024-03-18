@@ -6,7 +6,7 @@ local map = vim.keymap.set
 map("n", ";", ":", { nowait = true, desc = "Command mode" })
 map("n", "<Leader><Leader>", ":nohlsearch<CR>", { desc = "Clear search highlighting" })
 map("n", "C-f", ":Format<CR>", { desc = "Format file" })
-map("n", "<Leader>s", ":ClangdSwitchSourceHeader", { desc = "Switch between header and source file" })
+map("n", "<Leader>s", ":ClangdSwitchSourceHeader<CR>", { desc = "Switch between header and source file" })
 
 -- Telescope
 map("n", "<C-p>", "<cmd>Telescope git_files<CR>", { desc = "Find files in version control" })
@@ -71,17 +71,13 @@ map("n", "<Leader>q", "<cmd>BufDel<CR>", { desc = "Close buffer" })
 map("n", "<Leader>Q", "<cmd>BufDel!<CR>", { desc = "Close buffer ignore changes" })
 
 -- Buffer line
+map("n", "<TAB>", "<C-i>") -- Keep <C-i> for jump forward
 map("n", "L", function()
-	require("nvchad.tabufline").tabuflineNext()
+	require("nvchad.tabufline").next()
 end, { desc = "Go to next buffer" })
 map("n", "H", function()
-	require("nvchad.tabufline").tabuflinePrev()
+	require("nvchad.tabufline").prev()
 end, { desc = "Go to previous buffer" })
 
 -- Plenary
 map("n", "<Leader>t", "<Plug>PlenaryTestFile", { desc = "Run plenary test on file" })
-
--- Copilot
-map("i", "<C-l>", function()
-	vim.fn.feedkeys(vim.fn["copilot#Accept"](), "")
-end, { replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true, desc = "Copilot accept" })
