@@ -1,56 +1,40 @@
-require("custom.globals")
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
+vim.g.mapleader = " "
 
-local options = {
-	guicursor = "", -- disable cursor styling
-	cursorline = false, -- disable cursor styling
-	completeopt = { "menuone", "noselect" }, -- options for insert mode completion (for cmp plugin)
-	conceallevel = 0, -- so that `` is visible in markdown files
-	cmdheight = 2, -- number of of screen lines to use for the command line
-	relativenumber = true, -- relative numbers from line cursor is on
-	swapfile = false,
-	hlsearch = true, -- highlight all matches of previous search pattern
-	incsearch = true, -- highlight matches of current search pattern as it is typed
-	scrolloff = 8, -- minimal number of screen lines to keep above and below the cursor.
-	-- smarttab = true,
-	tabstop = 2, -- number of spaces to insert for a tab
-	shiftwidth = 2, -- number of spaces inserted for each indentation
-	undofile = true, -- keep undo history between sessions
-	backup = false, -- Some servers have issues with backup files, see #649.
-	writebackup = false,
-}
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-for key, value in pairs(options) do
-	vim.opt[key] = value
+if not vim.loop.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
 end
 
-vim.opt.shortmess:append("c") -- hide startup message
+vim.opt.rtp:prepend(lazypath)
 
--- highlight yank
-vim.cmd([[
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 80})
-augroup END
-]])
+local lazy_config = require "configs.lazy"
 
--- wrap git commit body message lines at 72 characters
-vim.cmd([["
-    augroup gitsetup
-        autocmd!
-        autocmd FileType gitcommit
-                \ autocmd CursorMoved,CursorMovedI * 
-                        \ let &l:textwidth = line('.') == 1 ? 50 : 72
-augroup end
-"]])
+-- load plugins
+require("lazy").setup({
+  {
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+    config = function()
+      require "options"
+    end,
+  },
 
-local enable_providers = {
-	"python3_provider",
-	-- and so on
-}
+  { import = "plugins" },
+}, lazy_config)
 
-for _, plugin in pairs(enable_providers) do
-	vim.g["loaded_" .. plugin] = nil
-	vim.cmd("runtime " .. plugin)
-end
+-- load theme
+dofile(vim.g.base46_cache .. "defaults")
+dofile(vim.g.base46_cache .. "statusline")
 
-vim.g.python3_host_prog = "/bin/python3"
+require "nvchad.autocmds"
+
+vim.schedule(function()
+  require "mappings"
+end)
+require 'myinit'

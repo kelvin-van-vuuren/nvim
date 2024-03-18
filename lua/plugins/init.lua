@@ -1,7 +1,6 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require("configs.overrides")
 
 return {
-
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -9,13 +8,13 @@ return {
 			{
 				"jose-elias-alvarez/null-ls.nvim",
 				config = function()
-					require("custom.configs.lsp.null-ls")
+					require("configs.lsp.null-ls")
 				end,
 			},
 		},
 		config = function()
-			require("plugins.configs.lspconfig")
-			require("custom.configs.lsp")
+			require("nvchad.configs.lspconfig")
+			require("configs.lsp")
 		end, -- Override to setup mason-lspconfig
 	},
 
@@ -70,14 +69,14 @@ return {
 		"max397574/better-escape.nvim",
 		event = "InsertEnter",
 		config = function()
-			require("custom.configs.betterescape")
+			require("configs.betterescape")
 		end,
 	},
 
 	{
 		"mfussenegger/nvim-dap",
 		config = function()
-			require("custom.configs.dap")
+			require("configs.dap")
 		end,
 	},
 

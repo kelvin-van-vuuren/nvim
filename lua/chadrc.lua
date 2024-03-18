@@ -2,8 +2,8 @@
 local M = {}
 
 -- Path to overriding theme and highlights files
-local highlights = require("custom.highlights")
-local overrides = require("custom.configs.overrides")
+local highlights = require("highlights")
+local overrides = require("configs.overrides")
 
 M.ui = {
 	theme = "onedark",
@@ -13,11 +13,11 @@ M.ui = {
 	hl_add = highlights.add,
 }
 
-M.plugins = "custom.plugins"
+-- M.plugins = "plugins"
 
 M.ui = overrides.ui
 
 -- check core.mappings for table structure
-M.mappings = require("custom.mappings")
+-- M.mappings = require("mappings")
 
 return M
