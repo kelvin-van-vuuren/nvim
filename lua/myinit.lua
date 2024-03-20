@@ -54,3 +54,5 @@ for _, plugin in pairs(enable_providers) do
 end
 
 vim.g.python3_host_prog = "/bin/python3"
+
+-- dofile(vim.g.base46_cache .. "syntax")
