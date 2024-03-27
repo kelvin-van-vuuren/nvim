@@ -13,7 +13,7 @@ return {
 			},
 		},
 		config = function()
-			require("nvchad.configs.lspconfig")
+			require("nvchad.configs.lspconfig").defaults() -- nvchad defaults for lua
 			require("configs.lsp")
 		end, -- Override to setup mason-lspconfig
 	},
