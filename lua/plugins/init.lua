@@ -67,10 +67,10 @@ return {
 	-- escape using key combo (currently set to jk)
 	{
 		"max397574/better-escape.nvim",
-		event = "InsertEnter",
 		config = function()
-			require("configs.betterescape")
+			require("better_escape").setup()
 		end,
+		lazy = false,
 	},
 
 	{
@@ -110,13 +110,13 @@ return {
 		"vimwiki/vimwiki",
 	},
 
-  {
-    "zbirenbaum/copilot.lua",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup(require("configs.copilot"))
-    end,
-  },
+	{
+		"zbirenbaum/copilot.lua",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup(require("configs.copilot"))
+		end,
+	},
 
 	{
 		"leoluz/nvim-dap-go",

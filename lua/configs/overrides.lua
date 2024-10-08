@@ -14,7 +14,7 @@ M.treesitter = {
 }
 
 M.mason = {
-	ensure_installed = {
+	pkgs = {
 		-- lua stuff
 		"lua-language-server",
 		"stylua",
