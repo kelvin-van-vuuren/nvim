@@ -7,10 +7,11 @@ local overrides = require("configs.overrides")
 
 M.ui = {
 	theme = "onedark",
-	-- theme_toggle = { "onedark", "one_light" },
 
-	-- hl_override = highlights.override,
-	-- hl_add = highlights.add,
+	-- hl_override = {
+	-- 	Comment = { italic = true },
+	-- 	["@comment"] = { italic = true },
+	-- },
 }
 
 M.ui = overrides.ui
