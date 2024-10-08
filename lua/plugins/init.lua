@@ -53,11 +53,6 @@ return {
 	},
 
 	{
-		"lewis6991/gitsigns.nvim",
-		opts = overrides.gitsigns,
-	},
-
-	{
 		"hrsh7th/nvim-cmp",
 		opts = overrides.cmp,
 	},
