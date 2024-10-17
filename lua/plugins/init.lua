@@ -73,6 +73,7 @@ return {
 		config = function()
 			require("configs.dap")
 		end,
+		lazy = false,
 	},
 
 	{
@@ -80,7 +81,7 @@ return {
 		config = function()
 			require("dapui").setup()
 		end,
-		requires = { "mfussenegger/nvim-dap" },
+		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
 	},
 
 	{
@@ -88,7 +89,7 @@ return {
 		config = function()
 			require("nvim-dap-virtual-text").setup()
 		end,
-		requires = { "mfussenegger/nvim-dap" },
+		dependencies = { "mfussenegger/nvim-dap", "nvim-dap-ui" },
 	},
 
 	-- better bdelete, close buffers without closing windows
@@ -100,7 +101,6 @@ return {
 	{
 		"nvim-lua/plenary.nvim",
 	},
-
 	{
 		"vimwiki/vimwiki",
 	},

@@ -4,10 +4,10 @@ local dap = require("dap")
 require("configs.dap.ui")
 
 -- debuggers
-local lldb = require("configs.dap.adapters.lldb")
+local gdb = require("configs.dap.adapters.gdb")
 
-dap.adapters.lldb = lldb.adapter
+dap.adapters.gdb = gdb.adapter
 
-dap.configurations.c = lldb.config
-dap.configurations.cpp = lldb.config
-dap.configurations.rust = lldb.config
+dap.configurations.c = gdb.config
+dap.configurations.cpp = gdb.config
+dap.configurations.rust = gdb.config
