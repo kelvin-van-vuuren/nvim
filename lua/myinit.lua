@@ -17,6 +17,7 @@ local options = {
 	undofile = true, -- keep undo history between sessions
 	backup = false, -- Some servers have issues with backup files, see #649.
 	writebackup = false,
+	spell = true, -- enable spell checking
 }
 
 for key, value in pairs(options) do
