@@ -35,6 +35,26 @@ M.config = {
       },
     },
   },
+  {
+    name = "Attach to gdbserver :1234",
+    type = "cppdbg",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to local executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    miMode = 'gdb',
+    miDebuggerServerAddress = 'localhost:1234',  -- gdbserver address
+    miDebuggerPath = '/usr/bin/gdb',
+    stopOnEntry = false,
+    setupCommands = {
+      {
+        text = '-enable-pretty-printing',
+        description = 'Enable pretty printing',
+        ignoreFailures = false
+      },
+    },
+  },
 }
 
 return M
