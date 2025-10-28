@@ -3,15 +3,6 @@ local overrides = require("configs.overrides")
 return {
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = {
-			-- format & linting
-			{
-				"jose-elias-alvarez/null-ls.nvim",
-				config = function()
-					require("configs.lsp.null-ls")
-				end,
-			},
-		},
 		config = function()
 			require("nvchad.configs.lspconfig").defaults() -- nvchad defaults for lua
 			require("configs.lsp")
@@ -99,13 +90,6 @@ return {
 	},
 
 	{
-		"nvim-lua/plenary.nvim",
-	},
-	{
-		"vimwiki/vimwiki",
-	},
-
-	{
 		"zbirenbaum/copilot.lua",
 		event = "InsertEnter",
 		config = function()
@@ -119,6 +103,14 @@ return {
 		dependencies = "mfussenegger/nvim-dap",
 		config = function(_, opts)
 			require("dap-go").setup(opts)
+		end,
+	},
+
+	{
+		"stevearc/conform.nvim",
+		event = "BufWritePre",
+		config = function()
+			require("configs.conform")
 		end,
 	},
 

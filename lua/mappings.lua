@@ -56,15 +56,12 @@ map(
 map("n", "<Leader>dF", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Go to previous diagnostic" })
 map("n", "<Leader>df", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
 map("n", "<Leader>dt", "<cmd>Telescope diagnostics<CR>", { desc = "Telescope diagnostics" })
-map("n", "<Leader>da", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Lsp code action" })
+map("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Lsp code action" })
 
--- Null-ls
-map(
-	"n",
-	"<C-f>",
-	"<cmd>lua require('configs.lsp.null-ls').lsp_formatting(vim.api.nvim_get_current_buf())<CR>",
-	{ desc = "Format current file using null-ls" }
-)
+-- Conform
+map("n", "<C-f>", function()
+	require("conform").format({ async = true, lsp_fallback = true })
+end, { desc = "Format current file [Conform]" })
 
 -- Buffer delete
 map("n", "<Leader>q", "<cmd>BufDel<CR>", { desc = "Close buffer" })
