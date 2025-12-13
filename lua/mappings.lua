@@ -4,7 +4,7 @@ local map = vim.keymap.set
 
 -- General
 map("n", ";", ":", { nowait = true, desc = "Command mode" })
-map("n", "<Leader><Leader>", ":nohlsearch<CR>", { desc = "Clear search highlighting" })
+map("x", "<Leader>p", [["_dP]], { desc = "Paste without replacing clipboard" })
 map("n", "C-f", ":Format<CR>", { desc = "Format file" })
 map("n", "<Leader>s", ":ClangdSwitchSourceHeader<CR>", { desc = "Switch between header and source file" })
 
