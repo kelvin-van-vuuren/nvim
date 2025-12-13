@@ -9,7 +9,7 @@ return {
 		end, -- Override to setup mason-lspconfig
 	},
 
-	-- override plugin configs
+	-- override existing NvChad's plugins
 	{
 		"williamboman/mason.nvim",
 		opts = overrides.mason,
@@ -46,6 +46,12 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		opts = overrides.cmp,
+	},
+
+	{
+		"stevearc/conform.nvim",
+		event = "BufWritePre", -- required for format on save
+		opts = overrides.conform,
 	},
 
 	-- Additional plugins
@@ -103,14 +109,6 @@ return {
 		dependencies = "mfussenegger/nvim-dap",
 		config = function(_, opts)
 			require("dap-go").setup(opts)
-		end,
-	},
-
-	{
-		"stevearc/conform.nvim",
-		event = "BufWritePre",
-		config = function()
-			require("configs.conform")
 		end,
 	},
 
