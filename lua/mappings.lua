@@ -6,7 +6,7 @@ local map = vim.keymap.set
 map("n", ";", ":", { nowait = true, desc = "Command mode" })
 map("x", "<Leader>p", [["_dP]], { desc = "Paste without replacing clipboard" })
 map("n", "C-f", ":Format<CR>", { desc = "Format file" })
-map("n", "<Leader>s", ":ClangdSwitchSourceHeader<CR>", { desc = "Switch between header and source file" })
+map("n", "<Leader>s", ":LspClangdSwitchSourceHeader<CR>", { desc = "Switch between header and source file" })
 
 -- Telescope
 map("n", "<C-p>", "<cmd>Telescope git_files<CR>", { desc = "Find files in version control" })

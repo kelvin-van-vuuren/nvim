@@ -4,9 +4,8 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			require("nvchad.configs.lspconfig").defaults() -- nvchad defaults for lua
 			require("configs.lsp")
-		end, -- Override to setup mason-lspconfig
+		end,
 	},
 
 	-- override existing NvChad's plugins
@@ -45,7 +44,13 @@ return {
 
 	{
 		"hrsh7th/nvim-cmp",
-		opts = overrides.cmp,
+		opts = function(_, opts)
+			opts = vim.tbl_deep_extend("force", opts, overrides.cmp)
+			opts.sorting = opts.sorting or {}
+			opts.sorting.comparators = opts.sorting.comparators or {}
+			table.insert(opts.sorting.comparators, 1, require("clangd_extensions.cmp_scores"))
+			return opts
+		end,
 	},
 
 	{
@@ -110,6 +115,12 @@ return {
 		config = function(_, opts)
 			require("dap-go").setup(opts)
 		end,
+	},
+
+	{
+		-- Setup happens in configs/server-settings/clangd.lua
+		"p00f/clangd_extensions.nvim",
+		lazy = true,
 	},
 
 	-- To make a plugin not be loaded

@@ -1,35 +1,27 @@
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
+require("nvchad.configs.lspconfig").defaults()
+
+vim.lsp.log.set_level(vim.log.levels.WARN)
 
 local servers = { "ts_ls", "clangd", "gopls", "pyright" }
 
-vim.lsp.enable(servers)
+for _, lsp in ipairs(servers) do
+	local opts = {}
+	local exists, settings = pcall(require, "configs.lsp.server-settings." .. lsp)
+	if exists then
+		opts = vim.tbl_deep_extend("force", settings, opts)
+	end
+	vim.lsp.config(lsp, opts)
+	vim.lsp.enable(lsp)
+end
 
--- for _, lsp in ipairs(servers) do
--- 	local opts = {
--- 		on_init = on_init,
--- 		on_attach = on_attach,
--- 		capabilities = capabilities,
--- 	}
---
--- 	local exists, settings = pcall(require, "configs.lsp.server-settings." .. lsp)
--- 	if exists then
--- 		opts = merge_tb("force", settings, opts)
--- 	end
---
-vim.lsp.config("clangd", {
-	on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = false
-		client.server_capabilities.documentRangeFormattingProvider = false
-		on_attach(client, bufnr)
-	end,
-	on_init = on_init,
-	capabilities = capabilities,
-})
-
-local config = {
-	virtual_text = false,
+local diagnostics_config = {
+	virtual_text = {
+		spacing = 4,
+		source = "if_many",
+		prefix = "●",
+		-- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+		-- prefix = "icons",
+	},
 	underline = true,
 	update_in_insert = false,
 	severity_sort = true,
@@ -39,6 +31,10 @@ local config = {
 		border = "single",
 		source = "always",
 	},
+	inlay_hints = {
+		enabled = true,
+		exclude = { "vue" }, -- filetypes for which you don't want to enable inlay hints
+	},
 }
 
-vim.diagnostic.config(config)
+vim.diagnostic.config(diagnostics_config)
