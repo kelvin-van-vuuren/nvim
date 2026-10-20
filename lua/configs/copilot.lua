@@ -23,7 +23,7 @@ return {
 			accept_word = false,
 			accept_line = false,
 			next = "<C-]>",
-			prev = "<C-[>",
+			prev = "<M-[>",
 			dismiss = "<ESC>",
 		},
 	},

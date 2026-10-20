@@ -9,6 +9,7 @@ M.treesitter = {
 		"typescript",
 		"c",
 		"cpp",
+		"cmake",
 		"python",
 		"go",
 		"yaml",
@@ -26,7 +27,7 @@ M.treesitter = {
 }
 
 M.mason = {
-	ensure_installed = {
+	pkgs = {
 		-- lua stuff
 		"lua-language-server",
 		"stylua",
@@ -40,7 +41,7 @@ M.mason = {
 		-- C / C++
 		"clangd",
 		"clang-format",
-		"cmake-language-server",
+		"neocmakelsp",
 		"cpplint",
 		"cpptools",
 
@@ -67,6 +68,7 @@ M.mason = {
 		"gomodifytags",
 		"gopls",
 	},
+	skip = {},
 }
 
 -- git support in nvimtree
@@ -88,7 +90,6 @@ M.nvimtree = {
 M.ui = {
 	tabufline = {
 		lazyload = false,
-		overriden_modules = nil,
 	},
 }
 
@@ -144,8 +145,33 @@ M.conform = {
 	format_on_save = {
 		-- These options will be passed to conform.format()
 		timeout_ms = 500,
-		lsp_fallback = true,
+		lsp_format = "fallback",
 	},
+}
+
+-- clangd_extensions.nvim (AST viewer, type hierarchy, symbol info, memory usage)
+M.clangd_extensions = {
+	ast = {
+		role_icons = {
+			type = "",
+			declaration = "",
+			expression = "",
+			specifier = "",
+			statement = "",
+			["template argument"] = "",
+		},
+		kind_icons = {
+			Compound = "",
+			Recovery = "",
+			TranslationUnit = "",
+			PackExpansion = "",
+			TemplateTypeParm = "",
+			TemplateTemplateParm = "",
+			TemplateParamObject = "",
+		},
+	},
+	memory_usage = { border = "single" },
+	symbol_info = { border = "single" },
 }
 
 return M

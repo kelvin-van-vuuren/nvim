@@ -2,7 +2,7 @@ require("nvchad.configs.lspconfig").defaults()
 
 vim.lsp.log.set_level(vim.log.levels.WARN)
 
-local servers = { "ts_ls", "clangd", "gopls", "pyright" }
+local servers = { "ts_ls", "clangd", "neocmake", "gopls", "pyright" }
 
 for _, lsp in ipairs(servers) do
 	local opts = {}
@@ -29,11 +29,7 @@ local diagnostics_config = {
 		focusable = false,
 		style = "minimal",
 		border = "single",
-		source = "always",
-	},
-	inlay_hints = {
-		enabled = true,
-		exclude = { "vue" }, -- filetypes for which you don't want to enable inlay hints
+		source = true,
 	},
 }
 

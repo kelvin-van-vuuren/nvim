@@ -3,7 +3,7 @@ local M = {}
 
 local overrides = require("configs.overrides")
 
-M.ui = {
+M.base46 = {
 	theme = "onedark",
 
 	-- hl_override = {
@@ -13,5 +13,9 @@ M.ui = {
 }
 
 M.ui = overrides.ui
+
+-- Packages installed by :MasonInstallAll. NvChad also adds the servers enabled
+-- through vim.lsp.enable and the formatters registered with conform.
+M.mason = overrides.mason
 
 return M

@@ -10,11 +10,6 @@ return {
 
 	-- override existing NvChad's plugins
 	{
-		"williamboman/mason.nvim",
-		opts = overrides.mason,
-	},
-
-	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = overrides.treesitter,
 	},
@@ -118,9 +113,9 @@ return {
 	},
 
 	{
-		-- Setup happens in configs/server-settings/clangd.lua
 		"p00f/clangd_extensions.nvim",
-		lazy = true,
+		ft = { "c", "cpp", "objc", "objcpp", "cuda" },
+		opts = overrides.clangd_extensions,
 	},
 
 	-- To make a plugin not be loaded

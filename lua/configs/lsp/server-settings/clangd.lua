@@ -1,19 +1,17 @@
--- Prepare the capabilities (fix the utf-16 offset error)
-local capabilities = require("nvchad.configs.lspconfig").capabilities
-local clangd_capabilities = vim.deepcopy(capabilities)
-clangd_capabilities.offsetEncoding = { "utf-16" }
-
+-- Capabilities, offset encoding and filetypes come from nvim-lspconfig's
+-- lsp/clangd.lua and NvChad's "*" config. Only the clangd specific parts are
+-- set here.
 return {
-	capabilities = clangd_capabilities,
-
 	root_markers = {
+		".clangd",
+		".clang-tidy",
+		".clang-format",
 		"compile_commands.json",
 		"compile_flags.txt",
 		"configure.ac", -- AutoTools
-		"Makefile",
-		"configure.ac",
 		"configure.in",
 		"config.h.in",
+		"Makefile",
 		"meson.build",
 		"meson_options.txt",
 		"build.ninja",
@@ -36,39 +34,25 @@ return {
 		usePlaceholders = true,
 		completeUnimported = true,
 		clangdFileStatus = true,
-		semanticHighlighting = true,
 	},
 
-	on_attach = function(client, _)
-		-- 1. Disable built-in formatting (use conform instead)
+	on_attach = function(client, bufnr)
+		-- Formatting is done by conform (clang-format)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentRangeFormattingProvider = false
 
-		-- 2. Setup Clangd Extensions
-		require("clangd_extensions").setup({
-			inlay_hints = {
-				inline = false,
-			},
-			ast = {
-				-- Icons for the AST view
-				role_icons = {
-					type = "",
-					declaration = "",
-					expression = "",
-					specifier = "",
-					statement = "",
-					["template argument"] = "",
-				},
-				kind_icons = {
-					Compound = "",
-					Recovery = "",
-					TranslationUnit = "",
-					PackExpansion = "",
-					TemplateTypeParm = "",
-					TemplateTemplateParm = "",
-					TemplateParamObject = "",
-				},
-			},
-		})
+		-- Parameter names, deduced types and designators
+		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+
+		local function map(lhs, rhs, desc)
+			vim.keymap.set("n", lhs, rhs, { buffer = bufnr, desc = desc })
+		end
+
+		-- clangd_extensions.nvim commands
+		map("<Leader>s", "<cmd>ClangdSwitchSourceHeader<CR>", "Clangd switch source/header")
+		map("<Leader>cA", "<cmd>ClangdAST<CR>", "Clangd show AST")
+		map("<Leader>ct", "<cmd>ClangdTypeHierarchy<CR>", "Clangd type hierarchy")
+		map("<Leader>ci", "<cmd>ClangdSymbolInfo<CR>", "Clangd symbol info")
+		map("<Leader>cM", "<cmd>ClangdMemoryUsage<CR>", "Clangd memory usage")
 	end,
 }

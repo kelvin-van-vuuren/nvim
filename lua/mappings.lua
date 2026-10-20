@@ -5,8 +5,6 @@ local map = vim.keymap.set
 -- General
 map("n", ";", ":", { nowait = true, desc = "Command mode" })
 map("x", "<Leader>p", [["_dP]], { desc = "Paste without replacing clipboard" })
-map("n", "C-f", ":Format<CR>", { desc = "Format file" })
-map("n", "<Leader>s", ":ClangdSwitchSourceHeader<CR>", { desc = "Switch between header and source file" })
 
 -- Telescope
 map("n", "<C-p>", "<cmd>Telescope git_files<CR>", { desc = "Find files in version control" })
@@ -24,19 +22,39 @@ map("n", "<Leader>po", "<cmd>Telescope oldfiles<CR>", { desc = "Find oldfiles" }
 map("n", "<Leader>pk", "<cmd>Telescope keymaps<CR>", { desc = "Show keymaps" })
 
 -- Nvim DAP
-map("n", "<Leader>dl", "<cmd>lua require'dap'.step_into()<CR>", { desc = "Debugger step into" })
-map("n", "<Leader>dj", "<cmd>lua require'dap'.step_over()<CR>", { desc = "Debugger step over" })
-map("n", "<Leader>dk", "<cmd>lua require'dap'.step_out()<CR>", { desc = "Debugger step out" })
-map("n", "<Leader>d<space>", "<cmd>lua require'dap'.continue()<CR>", { desc = "Debugger continue" })
-map("n", "<Leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { desc = "Debugger toggle breakpoint" })
-map(
-	"n",
-	"<Leader>dd",
-	"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-	{ desc = "Debugger set conditional breakpoint" }
-)
-map("n", "<Leader>de", "<cmd>lua require'dap'.terminate()<CR>", { desc = "Debugger reset" })
-map("n", "<Leader>dr", "<cmd>lua require'dap'.run_last()<CR>", { desc = "Debugger run last" })
+map("n", "<Leader>dl", function()
+	require("dap").step_into()
+end, { desc = "Debugger step into" })
+map("n", "<Leader>dj", function()
+	require("dap").step_over()
+end, { desc = "Debugger step over" })
+map("n", "<Leader>dk", function()
+	require("dap").step_out()
+end, { desc = "Debugger step out" })
+map("n", "<Leader>d<space>", function()
+	require("dap").continue()
+end, { desc = "Debugger continue" })
+map("n", "<Leader>db", function()
+	require("dap").toggle_breakpoint()
+end, { desc = "Debugger toggle breakpoint" })
+map("n", "<Leader>dd", function()
+	require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end, { desc = "Debugger set conditional breakpoint" })
+map("n", "<Leader>de", function()
+	require("dap").terminate()
+end, { desc = "Debugger reset" })
+map("n", "<Leader>dr", function()
+	require("dap").run_last()
+end, { desc = "Debugger run last" })
+map("n", "<Leader>dp", function()
+	require("dap").repl.toggle()
+end, { desc = "Debugger toggle REPL" })
+map("n", "<Leader>du", function()
+	require("dapui").toggle()
+end, { desc = "Debugger toggle UI" })
+map({ "n", "x" }, "<Leader>dv", function()
+	require("dapui").eval()
+end, { desc = "Debugger evaluate expression" })
 
 -- Terminal
 map({ "n", "t" }, "<C-\\>", function()
@@ -47,20 +65,24 @@ end, { desc = "Terminal Toggle Floating term" })
 map("n", "<C-a>", "<cmd>NvimTreeToggle<Cr>", { desc = "Toggle file tree" })
 
 -- LSP config
-map(
-	"n",
-	"gl",
-	"<cmd>lua vim.diagnostic.open_float(0, { scope = 'line', border = 'single' })<CR>",
-	{ desc = "Lsp show diagnostic" }
-)
-map("n", "<Leader>dF", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Go to previous diagnostic" })
-map("n", "<Leader>df", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
+map("n", "gl", function()
+	vim.diagnostic.open_float({ scope = "line", border = "single" })
+end, { desc = "Lsp show diagnostic" })
+map("n", "<Leader>dF", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous diagnostic" })
+map("n", "<Leader>df", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next diagnostic" })
 map("n", "<Leader>dt", "<cmd>Telescope diagnostics<CR>", { desc = "Telescope diagnostics" })
-map("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Lsp code action" })
+map("n", "<Leader>ca", vim.lsp.buf.code_action, { desc = "Lsp code action" })
+map("n", "<Leader>lh", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+end, { desc = "Lsp toggle inlay hints" })
 
 -- Conform
 map("n", "<C-f>", function()
-	require("conform").format({ async = true, lsp_fallback = true })
+	require("conform").format({ async = true, lsp_format = "fallback" })
 end, { desc = "Format current file [Conform]" })
 
 -- Buffer delete

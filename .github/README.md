@@ -18,8 +18,10 @@ Custom <a href="https://neovim.io/">Neovim</a> config using <a href="https://git
 
 ### Features (on top of [NvChad's](https://nvchad.com/#/docs/features))
 * [**Clangd**](https://clangd.llvm.org/): language server for C/C++ development.
-* [**Null-ls**](https://github.com/jose-elias-alvarez/null-ls.nvim): For diagnostics, formatting, code actions and more.
-* [**Nvim-dap**](https://github.com/mfussenegger/nvim-dap) + [**nvim-dap-ui**](https://github.com/rcarriga/nvim-dap-ui): Debugger with [lldb](https://lldb.llvm.org/) debug adapter [config](https://github.com/kelvin-van-vuuren/nvim/blob/main/plugins/dap/adapters/lldb.lua) for C / C++ / Rust projects.
+* [**clangd_extensions**](https://github.com/p00f/clangd_extensions.nvim): AST viewer, type hierarchy, symbol info and inlay hints for C/C++.
+* [**neocmakelsp**](https://github.com/neocmakelsp/neocmakelsp): language server for CMake files.
+* [**Conform**](https://github.com/stevearc/conform.nvim): formatting on save (clang-format, stylua, gofumpt, black).
+* [**Nvim-dap**](https://github.com/mfussenegger/nvim-dap) + [**nvim-dap-ui**](https://github.com/rcarriga/nvim-dap-ui): Debugger with [cpptools](https://github.com/kelvin-van-vuuren/nvim/blob/main/lua/configs/dap/adapters/cppdbg.lua) and [gdb](https://github.com/kelvin-van-vuuren/nvim/blob/main/lua/configs/dap/adapters/gdb.lua) adapters for C / C++ / Rust projects.
 * [**Better-escape**](): quickly escape insert mode using ``jk``.  
 * [**Git**](https://git-scm.com/): wrap header text at 50 chars, body text at 72.
 * [And more...](https://github.com/kelvin-van-vuuren/nvim/commits/main)
