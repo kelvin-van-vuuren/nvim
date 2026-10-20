@@ -25,6 +25,7 @@ M.treesitter = {
 		"make",
 		"bash",
 		"markdown",
+		"starlark", -- Bazel BUILD / .bzl files
 	},
 }
 
@@ -46,6 +47,11 @@ M.mason = {
 		"neocmakelsp",
 		"cpplint",
 		"cpptools",
+
+		-- Bazel
+		"starpls",
+		"bazelrc-lsp",
+		"buildifier",
 
 		-- shell
 		"shellcheck",
@@ -140,6 +146,7 @@ M.conform = {
 		lua = { "stylua" },
 		c = { "clang-format" },
 		cpp = { "clang-format" },
+		bzl = { "buildifier" },
 		go = { "gofumpt", "goimports-reviser", "golines" },
 		python = { "isort", "black" },
 	},

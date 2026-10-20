@@ -2,7 +2,7 @@ require("nvchad.configs.lspconfig").defaults()
 
 vim.lsp.log.set_level(vim.log.levels.WARN)
 
-local servers = { "ts_ls", "clangd", "neocmake", "gopls", "pyright" }
+local servers = { "ts_ls", "clangd", "neocmake", "starpls", "bazelrc_lsp", "gopls", "pyright" }
 
 for _, lsp in ipairs(servers) do
 	local opts = {}
