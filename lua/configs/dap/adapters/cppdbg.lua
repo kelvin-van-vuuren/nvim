@@ -5,8 +5,10 @@
 local M = {}
 
 local function command()
-	local mason = vim.fn.exepath("OpenDebugAD7")
-	if mason ~= "" then
+	-- Resolved by path rather than exepath: this file loads before NvChad adds
+	-- Mason's bin directory to PATH.
+	local mason = vim.fn.stdpath("data") .. "/mason/bin/OpenDebugAD7"
+	if vim.uv.fs_stat(mason) then
 		return mason
 	end
 	return vim.fn.expand("~/.local/share/cpptools/cpptools/extension/debugAdapters/bin/OpenDebugAD7")

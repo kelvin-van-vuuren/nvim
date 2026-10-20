@@ -5,8 +5,13 @@ local M = {}
 -- autocmd in autocmds.lua. Run :TSInstallAll after changing the list.
 M.treesitter = {
 	ensure_installed = {
+		-- needed by Neovim itself (help tags, :h, Lua docs, query files)
 		"vim",
+		"vimdoc",
 		"lua",
+		"luadoc",
+		"query",
+		"printf",
 		"html",
 		"css",
 		"typescript",
