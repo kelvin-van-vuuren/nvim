@@ -11,6 +11,7 @@ return {
 	-- override existing NvChad's plugins
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		opts = overrides.treesitter,
 	},
 

@@ -9,6 +9,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- treesitter based indentation (the main branch has no indent module toggle)
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("treesitter-indent", { clear = true }),
+	callback = function(args)
+		local lang = vim.treesitter.language.get_lang(args.match)
+		if lang and vim.treesitter.language.add(lang) then
+			vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+		end
+	end,
+})
+
 -- git commit header 50 chars and wrap body message lines at 72 characters
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "gitcommit",

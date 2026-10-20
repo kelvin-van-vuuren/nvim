@@ -1,5 +1,8 @@
 local M = {}
 
+-- nvim-treesitter main branch: only the parser list is configured here.
+-- Highlighting is started by NvChad's FileType autocmd and indentation by the
+-- autocmd in autocmds.lua. Run :TSInstallAll after changing the list.
 M.treesitter = {
 	ensure_installed = {
 		"vim",
@@ -18,12 +21,6 @@ M.treesitter = {
 		"bash",
 		"markdown",
 	},
-	highlight = {
-		enable = true,
-		use_languagetree = true,
-	},
-
-	indent = { enable = true },
 }
 
 M.mason = {
